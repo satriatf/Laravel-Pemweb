@@ -18,5 +18,11 @@
           <span>Student</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link @if($currentRoute != 'admin/courses') collapsed @endif" href="courses">
+          <i class="bi bi-grid"></i>
+          <span>Courses</span>
+        </a>
+      </li>
     </ul>
   </aside><
