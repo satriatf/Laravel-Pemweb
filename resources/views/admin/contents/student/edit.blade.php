@@ -38,6 +38,16 @@
             </div>
 
             <div class="mb-2">
+                <label for="course_id" class="form-label">Course</label>
+                <select name="course_id" id="course_id" class="form-select">
+                    <option value="">Pilih Course</option>
+                    @foreach ($courses as $courses)
+                    <option value="{{ $courses->id }}">{{ $courses->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-2">
                 <label for="class" class="form-label">Class</label>
                 <input type="text" name="class" id="class" class="form-control" value="{{ $student->class ?? '' }}">
             </div>
