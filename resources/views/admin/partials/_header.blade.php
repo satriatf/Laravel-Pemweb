@@ -175,7 +175,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->name }}</h6>
-              <span>Programmer</span>
+              <span>{{ Auth::user()->email }}</span>
             </li>
             <li>
               <hr class="dropdown-divider">
