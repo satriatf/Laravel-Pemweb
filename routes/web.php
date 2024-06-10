@@ -2,17 +2,24 @@
 
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\StudentController;
-use App\Models\Courses;
+use App\Http\Controllers\StudentController;;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// route root
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route untuk menampilkan dashboard
-Route::get('admin/dashboard', [DashboardController::class, 'index']);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route untuk menampilkan dashboard
+Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Route untuk menampilkan data student
 Route::get('admin/student', [StudentController::class, 'index']);
@@ -49,3 +56,6 @@ Route::put('admin/courses/update/{id}', [CoursesController::class, 'update']);
 
 // Route untuk menghapus courses
 Route::delete('admin/courses/delete/{id}', [CoursesController::class, 'destroy']);
+});
+
+require __DIR__.'/auth.php';
